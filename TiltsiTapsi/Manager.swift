@@ -1,4 +1,3 @@
-
 import AudioToolbox
 import AVFoundation
 import SpriteKit
@@ -40,22 +39,28 @@ class GameCenterManager: NSObject, GKGameCenterControllerDelegate {
         gameCenterViewController.dismiss(animated: true, completion: nil)
     }
     
-    func submitScore(_ score: Int, forGameType gameType: GameType) {
+    func submitScore(_ score: Int, forGameType gameType: GameType?) {
         guard GKLocalPlayer.local.isAuthenticated else {
             print("Player is not authenticated")
             return
         }
 
         let leaderboardID: String
-        switch gameType {
-        case .spatialMemory:
-            leaderboardID = "com.marinasuslova.spatialMemory"
-        case .colorMatch:
-            leaderboardID = "com.marinasuslova.colorMatch"
-        case .numberTrail:
-            leaderboardID = "com.marinasuslova.numberTrail"
-        case .corsiTapping:
-            leaderboardID = "com.marinasuslova.corsiTap"
+        if let gameType = gameType {
+            // Individual game leaderboards
+            switch gameType {
+            case .spatialMemory:
+                leaderboardID = "com.marinasuslova.spatialMemory"
+            case .colorMatch:
+                leaderboardID = "com.marinasuslova.colorMatch"
+            case .numberTrail:
+                leaderboardID = "com.marinasuslova.numberTrail"
+            case .corsiTapping:
+                leaderboardID = "com.marinasuslova.corsiTap"
+            }
+        } else {
+            // Challenge mode leaderboard
+            leaderboardID = "com.marinasuslova.challenge"
         }
 
         GKLeaderboard.submitScore(score, context: 0, player: GKLocalPlayer.local, leaderboardIDs: [leaderboardID]) { error in

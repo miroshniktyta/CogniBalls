@@ -34,7 +34,7 @@ class ColorMatchGameNode: SKNode {
         progressBarBackground.zPosition = 100
         
         // Initialize progress bar
-        progressBar = SKSpriteNode(color: .green, 
+        progressBar = SKSpriteNode(color: .systemGreen, 
                                  size: CGSize(width: size.width, height: progressBarHeight))
         progressBar.anchorPoint = CGPoint(x: 0, y: 0.5)
         progressBar.position = CGPoint(x: 0, y: size.height - 56)

@@ -67,11 +67,18 @@ class ChallengeScoreScene: SKScene {
     private func presentFinalScore() {
         let totalScore = ChallengeManager.shared.getTotalScore()
         let bestScore = UserDefaults.standard.integer(forKey: ChallengeManager.shared.challengeBestScoreKey)
+        let isNewBest = totalScore > bestScore
+        
+        if isNewBest {
+            UserDefaults.standard.set(totalScore, forKey: ChallengeManager.shared.challengeBestScoreKey)
+            // Submit challenge score to Game Center (passing nil for gameType indicates challenge mode)
+            GameCenterManager.shared.submitScore(totalScore, forGameType: nil)
+        }
         
         let scoreData = FinalScoreScene.ScoreData(
             score: totalScore,
             bestScore: bestScore,
-            isNewBestScore: totalScore > bestScore,
+            isNewBestScore: isNewBest,
             infoLines: ChallengeManager.shared.gameScores.enumerated().map { index, score in
                 "\(GameType.allCases[index].title): \(score)"
             }

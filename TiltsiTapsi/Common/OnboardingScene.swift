@@ -8,7 +8,7 @@ class OnboardingScene: SKScene {
         ),
         (
             "Challenge Mode",
-            "🔥 Challenge Mode is the ultimate test!\n🎯 Play all four games in a row with just ONE life per game.\n🏆 How high can you score?"
+            "🔥 Challenge Mode is the ultimate test!\n\n🎯 Play all four games in a row with just ONE life per game.\n\n🏆 How high can you score?"
         ),
         (
             "Reflexes & Speed",
