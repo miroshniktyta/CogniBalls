@@ -71,11 +71,12 @@ class GameViewController: UIViewController {
             skView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             skView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             skView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            skView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0)
+            skView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50)
         ])
         
         // Store reference to skView for later use
         self.skView = skView
+        AdManager.shared.presentAd(in: self)
     }
     
     private var skView: SKView?

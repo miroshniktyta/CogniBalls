@@ -18,6 +18,7 @@
 		4FB1745B2D4A57A400DCE5E5 /* CustomButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB1745A2D4A57A400DCE5E5 /* CustomButtonNode.swift */; };
 		4FB1745D2D4A588B00DCE5E5 /* SettingsButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB1745C2D4A588B00DCE5E5 /* SettingsButtonNode.swift */; };
 		4FB1745F2D4A5DE600DCE5E5 /* AppUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB1745E2D4A5DE600DCE5E5 /* AppUI.swift */; };
+		4FD4843D2D5673D70004317C /* AdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD4843C2D5673D70004317C /* AdManager.swift */; };
 		4FF2B86F2D42FB1C0047E7EB /* NumberTrailScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF2B86E2D42FB1C0047E7EB /* NumberTrailScene.swift */; };
 		4FF2B8752D47A8880047E7EB /* FinalScoreScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF2B8742D47A8880047E7EB /* FinalScoreScene.swift */; };
 		4FF2B87D2D4802970047E7EB /* CorsiTappingBall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF2B87C2D4802970047E7EB /* CorsiTappingBall.swift */; };
@@ -54,6 +55,7 @@
 		4FB1745A2D4A57A400DCE5E5 /* CustomButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButtonNode.swift; sourceTree = "<group>"; };
 		4FB1745C2D4A588B00DCE5E5 /* SettingsButtonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsButtonNode.swift; sourceTree = "<group>"; };
 		4FB1745E2D4A5DE600DCE5E5 /* AppUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUI.swift; sourceTree = "<group>"; };
+		4FD4843C2D5673D70004317C /* AdManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdManager.swift; sourceTree = "<group>"; };
 		4FF2B86E2D42FB1C0047E7EB /* NumberTrailScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberTrailScene.swift; sourceTree = "<group>"; };
 		4FF2B8742D47A8880047E7EB /* FinalScoreScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalScoreScene.swift; sourceTree = "<group>"; };
 		4FF2B87C2D4802970047E7EB /* CorsiTappingBall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CorsiTappingBall.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 				4FFDC4722CCAB6F3007AB026 /* Info.plist */,
 				4FFDC43A2CCAB30C007AB026 /* AppDelegate.swift */,
 				4FFDC4712CCAB68D007AB026 /* TiltsiTapsi.entitlements */,
+				4FD4843C2D5673D70004317C /* AdManager.swift */,
 				4FB174502D4A453F00DCE5E5 /* Challenge */,
 				4FF2B8922D48E7480047E7EB /* ColorMatch */,
 				4FF2B8882D4804C10047E7EB /* NumberTrain */,
@@ -290,6 +293,7 @@
 				4FFDC4622CCAB3D0007AB026 /* MenuScene.swift in Sources */,
 				4FB1745B2D4A57A400DCE5E5 /* CustomButtonNode.swift in Sources */,
 				4FFDC4662CCAB3D0007AB026 /* CorsiTappingScene.swift in Sources */,
+				4FD4843D2D5673D70004317C /* AdManager.swift in Sources */,
 				4FF2B8852D48048D0047E7EB /* NumberTrailGameNode.swift in Sources */,
 				4FB1745D2D4A588B00DCE5E5 /* SettingsButtonNode.swift in Sources */,
 				4FF2B8832D48042E0047E7EB /* SpatialMemoryGameNode.swift in Sources */,
