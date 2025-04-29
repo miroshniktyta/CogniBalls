@@ -76,7 +76,7 @@ class GameViewController: UIViewController {
         
         // Store reference to skView for later use
         self.skView = skView
-        AdManager.shared.presentAd(in: self)
+        AdManager.shared.vc = self
     }
     
     private var skView: SKView?

@@ -19,6 +19,8 @@ class MenuScene: SKScene, SKPhysicsContactDelegate {
         if !UserDefaults.standard.bool(forKey: "onboardingCompleted") {
             let onboardingScene = OnboardingScene(size: size)
             view.presentScene(onboardingScene, transition: .fade(withDuration: 0.3))
+        } else {
+            AdManager.shared.presentAd()
         }
     }
     

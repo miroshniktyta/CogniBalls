@@ -98,6 +98,7 @@ class OnboardingScene: SKScene {
     private func completeOnboarding() {
         UserDefaults.standard.set(true, forKey: "onboardingCompleted")
         let menuScene = MenuScene(size: size)
+        AdManager.shared.presentAd()
         view?.presentScene(menuScene, transition: .fade(withDuration: 0.5))
     }
 } 

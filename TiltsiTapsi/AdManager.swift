@@ -35,9 +35,13 @@ class AdManager {
     weak var presentingViewController: UIViewController?
     
     var adView: UIView?
+    var vc: UIViewController? = nil
     
-    func presentAd(in viewController: UIViewController) {
+    func presentAd() {
         guard let ad = AdManager.ads.randomElement() else {
+            return
+        }
+        guard let viewController = vc else {
             return
         }
         AdManager.currentAd = ad
