@@ -7,12 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F2B0D8F2DC8F99A00D4408D /* IdfaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2B0D8E2DC8F99A00D4408D /* IdfaViewController.swift */; };
 		4F3F621A2DC117120060C019 /* AppsFlyerLib-Static in Frameworks */ = {isa = PBXBuildFile; productRef = 4F3F62192DC117120060C019 /* AppsFlyerLib-Static */; };
-		4F3F621D2DC118B70060C019 /* AppManagerCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3F621B2DC118B70060C019 /* AppManagerCommon.swift */; };
-		4F3F621E2DC118B70060C019 /* AppManagerUAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3F621C2DC118B70060C019 /* AppManagerUAC.swift */; };
 		4F3F62202DC1199D0060C019 /* AdWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3F621F2DC1199D0060C019 /* AdWebViewController.swift */; };
 		4F3F62222DC119C80060C019 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3F62212DC119C80060C019 /* LoadingViewController.swift */; };
-		4F3F623F2DC11A980060C019 /* ViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3F623E2DC11A980060C019 /* ViewControllers.swift */; };
+		4F3F62412DC11FC80060C019 /* AppsFlyerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F3F62402DC11FC80060C019 /* AppsFlyerManager.swift */; };
 		4FB174482D494FF000DCE5E5 /* GameNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB174462D494FF000DCE5E5 /* GameNavigationBar.swift */; };
 		4FB1744C2D4A3B3900DCE5E5 /* OnboardingScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB1744B2D4A3B3900DCE5E5 /* OnboardingScene.swift */; };
 		4FB174512D4A453F00DCE5E5 /* ChallengeIntroScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB1744D2D4A453F00DCE5E5 /* ChallengeIntroScene.swift */; };
@@ -50,11 +49,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4F3F621B2DC118B70060C019 /* AppManagerCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManagerCommon.swift; sourceTree = "<group>"; };
-		4F3F621C2DC118B70060C019 /* AppManagerUAC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppManagerUAC.swift; sourceTree = "<group>"; };
+		4F2B0D8E2DC8F99A00D4408D /* IdfaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdfaViewController.swift; sourceTree = "<group>"; };
 		4F3F621F2DC1199D0060C019 /* AdWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdWebViewController.swift; sourceTree = "<group>"; };
 		4F3F62212DC119C80060C019 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
-		4F3F623E2DC11A980060C019 /* ViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllers.swift; sourceTree = "<group>"; };
+		4F3F62402DC11FC80060C019 /* AppsFlyerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsFlyerManager.swift; sourceTree = "<group>"; };
 		4FB174462D494FF000DCE5E5 /* GameNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameNavigationBar.swift; sourceTree = "<group>"; };
 		4FB1744B2D4A3B3900DCE5E5 /* OnboardingScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingScene.swift; sourceTree = "<group>"; };
 		4FB1744D2D4A453F00DCE5E5 /* ChallengeIntroScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeIntroScene.swift; sourceTree = "<group>"; };
@@ -106,16 +104,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		4F3F62232DC11A390060C019 /* Examples */ = {
-			isa = PBXGroup;
-			children = (
-				4F3F621B2DC118B70060C019 /* AppManagerCommon.swift */,
-				4F3F623E2DC11A980060C019 /* ViewControllers.swift */,
-				4F3F621C2DC118B70060C019 /* AppManagerUAC.swift */,
-			);
-			path = Examples;
-			sourceTree = "<group>";
-		};
 		4FB174472D494FF000DCE5E5 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,8 +192,9 @@
 			children = (
 				4FFDC43A2CCAB30C007AB026 /* AppDelegate.swift */,
 				4FFDC4722CCAB6F3007AB026 /* Info.plist */,
-				4F3F62232DC11A390060C019 /* Examples */,
 				4FD4843C2D5673D70004317C /* AdManager.swift */,
+				4F3F62402DC11FC80060C019 /* AppsFlyerManager.swift */,
+				4F2B0D8E2DC8F99A00D4408D /* IdfaViewController.swift */,
 				4F3F62212DC119C80060C019 /* LoadingViewController.swift */,
 				4F3F621F2DC1199D0060C019 /* AdWebViewController.swift */,
 				4FFDC4712CCAB68D007AB026 /* TiltsiTapsi.entitlements */,
@@ -306,14 +295,12 @@
 				4FB174532D4A453F00DCE5E5 /* ChallengeScoreScene.swift in Sources */,
 				4F3F62202DC1199D0060C019 /* AdWebViewController.swift in Sources */,
 				4FB174512D4A453F00DCE5E5 /* ChallengeIntroScene.swift in Sources */,
+				4F2B0D8F2DC8F99A00D4408D /* IdfaViewController.swift in Sources */,
 				4FFDC4782CCCF451007AB026 /* Ball.swift in Sources */,
 				4FB174522D4A453F00DCE5E5 /* ChallengeManager.swift in Sources */,
 				4FB1745F2D4A5DE600DCE5E5 /* AppUI.swift in Sources */,
 				4FB1744C2D4A3B3900DCE5E5 /* OnboardingScene.swift in Sources */,
 				4FB174572D4A479100DCE5E5 /* CustomButtonNode.swift in Sources */,
-				4F3F623F2DC11A980060C019 /* ViewControllers.swift in Sources */,
-				4F3F621D2DC118B70060C019 /* AppManagerCommon.swift in Sources */,
-				4F3F621E2DC118B70060C019 /* AppManagerUAC.swift in Sources */,
 				4FF2B8872D4804AF0047E7EB /* NumberedBall.swift in Sources */,
 				4FF2B8752D47A8880047E7EB /* FinalScoreScene.swift in Sources */,
 				4FFDC46C2CCAB3D0007AB026 /* Manager.swift in Sources */,
@@ -335,6 +322,7 @@
 				4FF2B88A2D48081B0047E7EB /* CorsiTappingGameNode.swift in Sources */,
 				4FB174592D4A576600DCE5E5 /* SettingsScene.swift in Sources */,
 				4FFDC4612CCAB3D0007AB026 /* SpatialMemoryScene.swift in Sources */,
+				4F3F62412DC11FC80060C019 /* AppsFlyerManager.swift in Sources */,
 				4FF2B8942D48E7480047E7EB /* ColorMatchScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -487,11 +475,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TiltsiTapsi/TiltsiTapsi.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = Z5GK9C4MBD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TiltsiTapsi/Info.plist;
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Your data will be used to deliver personalized ads to you.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -503,7 +492,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = asd.asdasd.asdasd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -524,11 +513,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = TiltsiTapsi/TiltsiTapsi.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = Z5GK9C4MBD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TiltsiTapsi/Info.plist;
+				INFOPLIST_KEY_NSUserTrackingUsageDescription = "Your data will be used to deliver personalized ads to you.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -540,7 +530,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = asd.asdasd.asdasd;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -7,34 +7,41 @@
 
 import UIKit
 import WebKit
+import AppsFlyerLib
+import AdSupport
 
 class LoadingViewController: UIViewController {
     
-//    let loader = UIActivityIndicatorView(style: .large)
     var finalRedirectURL: URL?
-
-//    var pushToken: String?
-//    var campaignId: String?
-//    var campaignName: String?
-//    var kdId: String?
-
+    private var isWaitingForDeepLink = true
+    private let deepLinkTimeout: TimeInterval = 5.0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .black
-//        self.view.addSubview(loader)
-//        loader.translatesAutoresizingMaskIntoConstraints = false
-//        loader.color = .white
-//        loader.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//        loader.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-//        loader.startAnimating()
         
+        AppsFlyerManager.shared.initialize()
+        NotificationCenter.default.addObserver(self, selector: #selector(deepLinkDataReceived), name: .deepLinkDataReceived, object: nil)
+        
+        // Start a timer to fetch ads if deep link data doesn't arrive
+        DispatchQueue.main.asyncAfter(deadline: .now() + deepLinkTimeout) { [weak self] in
+            guard let self = self, self.isWaitingForDeepLink else { return }
+            print("🔴🔴🔴 deepLinkTimeout reached")
+            self.isWaitingForDeepLink = false
+            self.fetchAds()
+        }
+    }
+    
+    @objc private func deepLinkDataReceived() {
+        guard isWaitingForDeepLink else { return }
+        isWaitingForDeepLink = false
         fetchAds()
     }
-
+    
     func buildURL() -> URLRequest? {
-//        let deviceId: String? = nil
-//        let pushToken = self.pushToken
-//        let idfv = UIDevice.current.identifierForVendor?.uuidString
+        let deviceId: String? = ASIdentifierManager.shared().advertisingIdentifier.uuidString
+        let idfv: String? = UIDevice.current.identifierForVendor?.uuidString
+        let appsfCuid: String = AppsFlyerLib.shared().getAppsFlyerUID()
         
         // Build URL Components
         var urlComponents = URLComponents()
@@ -43,14 +50,35 @@ class LoadingViewController: UIViewController {
         urlComponents.path = "/ads"
         
         var queryItems = [
-//            URLQueryItem(name: "device_id", value: deviceId), // IDFA
-//            URLQueryItem(name: "idfv", value: idfv),
-            URLQueryItem(name: "utm_source", value: "fb_aosapp"),
-//            URLQueryItem(name: "push-token", value: pushToken),
-//            URLQueryItem(name: "campaign_id", value: self.campaignId),
-//            URLQueryItem(name: "camp_name", value: self.campaignName),
-//            URLQueryItem(name: "kd_id", value: self.kdId)
+            URLQueryItem(name: "device_id", value: deviceId), // IDFA todo
+            URLQueryItem(name: "idfv", value: idfv),
+            URLQueryItem(name: "utm_source", value: "fb_iosapp"),
+            URLQueryItem(name: "appsf_cuid", value: appsfCuid)
         ]
+        
+        // Add deep link data if available
+        if let deepLinkData = AppsFlyerManager.shared.getDeepLinkData() {
+            // Map of your custom parameter names to the deep link keys
+            let mapping: [(String, String)] = [
+                ("deep_link_value", "team_id"),
+                ("deep_link_sub1", "url_path"),
+                ("deep_link_sub2", "c"),
+                ("deep_link_sub3", "af_adset"),
+                ("deep_link_sub4", "buyer_name"),
+                ("deep_link_sub5", "account_id"),
+                ("deep_link_sub6", "fb_pixel"),
+                ("deep_link_sub7", "custom_sub_1"),
+                ("deep_link_sub8", "custom_sub_2"),
+                ("deep_link_sub9", "custom_sub_3"),
+                ("deep_link_sub10", "custom_sub_4")
+            ]
+            
+            for (paramName, deepLinkKey) in mapping {
+                if let value = deepLinkData[deepLinkKey] as? String {
+                    queryItems.append(URLQueryItem(name: paramName, value: value))
+                }
+            }
+        }
         
         // Remove any nil values
         queryItems = queryItems.compactMap { $0.value == nil ? nil : $0 }
@@ -64,7 +92,7 @@ class LoadingViewController: UIViewController {
         request.setValue(userAg, forHTTPHeaderField: "User-Agent")
         return request
     }
-
+    
     func fetchAds() {
         guard var request = buildURL() else {
             print("🔴🔴🔴 nil from buildURL")
@@ -98,7 +126,7 @@ class LoadingViewController: UIViewController {
                 }
                 return
             }
-                        
+            
             do {
                 let ads = try JSONDecoder().decode([String: [Ad]].self, from: data)["ad_list"] ?? []
                 AdManager.ads = ads

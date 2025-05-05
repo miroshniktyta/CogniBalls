@@ -7,6 +7,8 @@
 
 import UIKit
 import SpriteKit
+import AppsFlyerLib
+import AppTrackingTransparency
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,10 +16,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+        let initialViewController: UIViewController
+        
+        if ATTrackingManager.trackingAuthorizationStatus == .notDetermined {
+            initialViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "idfa")
+        } else {
+            initialViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "loading")
+        }
+        
+        window = UIWindow()
+        window?.rootViewController = initialViewController
+        
+        window?.makeKeyAndVisible()
+        
         return true
     }
-
+    
+    // Handle deep links
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+//        AppsFlyerLib.shared().continue(userActivity, restorationHandler: restorationHandler)
+        return true
+    }
+    
+    // Handle URL schemes
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        AppsFlyerLib.shared().handleOpen(url, options: options)
+        return true
+    }
 }
 
 extension SKScene {
