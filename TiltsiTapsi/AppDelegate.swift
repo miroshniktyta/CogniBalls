@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = initialViewController
         
         window?.makeKeyAndVisible()
+        initializeAppsFluer()
         
         return true
     }
@@ -44,7 +45,98 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppsFlyerLib.shared().handleOpen(url, options: options)
         return true
     }
+    
+    @objc func appsFluerSendLaunch() {
+        AppsFlyerLib.shared().start()
+    }
+
 }
+
+extension AppDelegate {
+    
+    func initializeAppsFluer() {
+        AppsFlyerLib.shared().appsFlyerDevKey = "QNjmhXtbEGkZ5vXbCKiYja"
+        AppsFlyerLib.shared().appleAppID = "6741114445"
+        AppsFlyerLib.shared().customerUserID = AppsFlyerLib.shared().getAppsFlyerUID()
+        
+        AppsFlyerLib.shared().deepLinkDelegate = self
+//        AppsFlyerLib.shared().isDebug = true
+        
+        AppsFlyerLib.shared().waitForATTUserAuthorization(timeoutInterval: 90)
+        
+        NotificationCenter.default.addObserver(self, selector: NSSelectorFromString("appsFluerSendLaunch"), name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
+    
+}
+
+extension AppDelegate: DeepLinkDelegate {
+    
+    func didResolveDeepLink(_ result: DeepLinkResult) {
+        var fruitNameStr: String?
+        
+        switch result.status {
+        case .notFound:
+            NSLog("[AFSDK] Deep link not found")
+            return
+        case .failure:
+            print("Error %@", result.error!)
+            return
+        case .found:
+            NSLog("[AFSDK] Deep link found")
+        }
+        
+        guard let deepLinkObj:DeepLink = result.deepLink else {
+            NSLog("[AFSDK] Could not extract deep link object")
+            return
+        }
+        
+        saveDeepLinkParamIfNeeded(key: "deep_link_value", from: deepLinkObj.clickEvent)
+        saveDeepLinkParamIfNeeded(key: "deep_link_sub1", from: deepLinkObj.clickEvent)
+        saveDeepLinkParamIfNeeded(key: "deep_link_sub2", from: deepLinkObj.clickEvent)
+        saveDeepLinkParamIfNeeded(key: "deep_link_sub3", from: deepLinkObj.clickEvent)
+        saveDeepLinkParamIfNeeded(key: "deep_link_sub4", from: deepLinkObj.clickEvent)
+        saveDeepLinkParamIfNeeded(key: "deep_link_sub5", from: deepLinkObj.clickEvent)
+        saveDeepLinkParamIfNeeded(key: "deep_link_sub6", from: deepLinkObj.clickEvent)
+        saveDeepLinkParamIfNeeded(key: "deep_link_sub7", from: deepLinkObj.clickEvent)
+        saveDeepLinkParamIfNeeded(key: "deep_link_sub8", from: deepLinkObj.clickEvent)
+        saveDeepLinkParamIfNeeded(key: "deep_link_sub9", from: deepLinkObj.clickEvent)
+        saveDeepLinkParamIfNeeded(key: "deep_link_sub10", from: deepLinkObj.clickEvent)
+        
+        let deepLinkStr:String = deepLinkObj.toString()
+        NSLog("[AFSDK] DeepLink data is: \(deepLinkStr)")
+            
+        if( deepLinkObj.isDeferred == true) {
+            NSLog("[AFSDK] This is a deferred deep link")
+        }
+        else {
+            NSLog("[AFSDK] This is a direct deep link")
+        }
+        
+        fruitNameStr = deepLinkObj.deeplinkValue
+    }
+    
+    private func saveDeepLinkParamIfNeeded(key: String, from dict: [String: Any]) {
+        if dict.keys.contains(key) {
+            let value = dict[key] as? String
+            if let value = value, !value.isEmpty {
+                let saved = UserDefaults.standard.string(forKey: key)
+                if saved == nil || saved?.isEmpty == true {
+                    UserDefaults.standard.setValue(value, forKey: key)
+                }
+            }
+            NSLog("\(key): \(value ?? "nil")")
+        } else {
+            NSLog("[AFSDK] Could not extract \(key)")
+        }
+    }
+    
+}
+
+
+
+
+
+
 
 extension SKScene {
     func viewController() -> UIViewController? {
